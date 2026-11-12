@@ -1,0 +1,13 @@
+# Streamlit runtime theme — pins the widget primitives to the dashboard's
+# Light design tokens so Streamlit never re-themes widgets from the OS
+# color-scheme. Dark mode is layered on top at runtime by src/theme.py CSS
+# variables (see assets/custom_styles.css).
+[theme]
+base = "light"
+primaryColor = "#5457D6"
+backgroundColor = "#F6F7FB"
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#1B2437"
+
+[client]
+toolbarMode = "minimal"

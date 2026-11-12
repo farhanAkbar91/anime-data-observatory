@@ -1,0 +1,26 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Streamlit runtime & secrets
+.streamlit/secrets.toml
+
+# Operating System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Large dataset files (>100MB exceeds GitHub hard limit)
+# Note: Cleaned parquet tables in data/processed/ (<18MB) are tracked for zero-setup deployment
+data/raw/rating.csv
+data/raw/*.zip
+
+# UI/UX Prompt engineering artifacts (kept local, out of dashboard portfolio repo)
+documentation/stitch_*.md

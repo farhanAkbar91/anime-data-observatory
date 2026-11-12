@@ -1,0 +1,6 @@
+# Anime Data Observatory — tested with Python 3.14 (3.11+ supported)
+streamlit>=1.44
+pandas>=2.2
+numpy>=1.26
+plotly>=5.22
+pyarrow>=15.0

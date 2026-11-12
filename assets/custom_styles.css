@@ -1,0 +1,510 @@
+/* ==========================================================================
+   Anime Data Observatory — custom styles
+   Theme tokens (colors/shadows) are injected per-theme as :root variables by
+   src/theme.py; everything below is token-driven so it works in Light + Dark.
+   ========================================================================== */
+
+/* ---------- app shell ---------- */
+.stApp {
+  background: var(--bg);
+  color: var(--text);
+}
+.stApp header[data-testid="stHeader"] {
+  background: transparent;
+}
+[data-testid="stDecoration"], [data-testid="stDecorationContainer"] {
+  display: none !important;
+}
+.block-container {
+  padding: 1.6rem 2.2rem 2.5rem 2.2rem;
+  max-width: 1480px;
+}
+#MainMenu { visibility: hidden; }
+footer [data-testid="stFooter"] { display: none; }
+
+::selection { background: var(--accent-soft); }
+
+* { scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-thumb { background: var(--border); border-radius: 8px; }
+*::-webkit-scrollbar-track { background: transparent; }
+
+/* ---------- typography ---------- */
+html, body, .stApp, p, li {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, system-ui, sans-serif;
+}
+h1, h2, h3, h4 { color: var(--text); font-weight: 600; letter-spacing: -0.01em; }
+
+.page-title {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.015em;
+  margin: 0.2rem 0 0.15rem 0;
+}
+.page-subtitle {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  margin: 0 0 1.1rem 0;
+}
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 1.35rem 0 0.4rem 0;
+}
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 16px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+.section-note {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  margin: -0.25rem 0 0.55rem 2px;
+}
+
+/* ---------- header bar ---------- */
+.ado-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.35rem 0.35rem 0.9rem 0.35rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0.4rem;
+}
+.ado-brand .brand-name {
+  font-size: 1.22rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+.ado-brand .brand-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+.ado-brand .brand-tag {
+  color: var(--text-muted);
+  font-size: 0.83rem;
+  margin-top: 0.15rem;
+}
+.ado-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.theme-caption {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: -0.25rem;
+}
+
+/* ---------- sidebar ---------- */
+[data-testid="stSidebar"] {
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+}
+[data-testid="stSidebar"] * {
+  color: var(--text);
+}
+[data-testid="stSidebar"] .sidebar-heading {
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin: 1.05rem 0 0.45rem 0;
+}
+[data-testid="stSidebar"] hr {
+  border-color: var(--border);
+  margin: 1rem 0;
+}
+.sidebar-brand {
+  padding: 0.2rem 0.2rem 0;
+}
+.sidebar-brand .sb-name {
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: var(--text);
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.sidebar-brand .sb-name .brand-dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+  display: inline-block;
+}
+.sidebar-brand .sb-sub {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  margin-top: 0.2rem;
+}
+.sidebar-note {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.7rem 0.8rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.sidebar-note b { color: var(--text); font-weight: 600; }
+
+/* nav radio styled as pill list */
+[data-testid="stSidebar"] [role="radiogroup"] {
+  gap: 0.25rem;
+}
+[data-testid="stSidebar"] [role="radiogroup"] label {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  padding: 0.42rem 0.65rem !important;
+  margin-bottom: 0.1rem;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+[data-testid="stSidebar"] [role="radiogroup"] label:hover {
+  background: var(--hover-bg);
+}
+[data-testid="stSidebar"] [role="radiogroup"] label[data-checked="true"] {
+  background: var(--accent-soft);
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+}
+[data-testid="stSidebar"] [role="radiogroup"] label div[data-testid="stMarkdownContainer"] {
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+/* ---------- KPI cards ---------- */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.9rem;
+  margin-bottom: 0.35rem;
+}
+.kpi-cell { min-width: 0; }
+.kpi-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 0.95rem 1.05rem 0.85rem 1.05rem;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.kpi-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: var(--accent);
+  opacity: 0.85;
+}
+.kpi-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--text-muted);
+}
+.kpi-value {
+  font-size: 1.72rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-top: 0.3rem;
+  font-variant-numeric: tabular-nums;
+}
+.kpi-context {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---------- filter chips ---------- */
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0.4rem 0 0.9rem 0;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  background: var(--accent-soft);
+  color: var(--text);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  border-radius: 999px;
+  padding: 0.24rem 0.72rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+.chip-label {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  font-weight: 600;
+}
+.chip-muted {
+  background: var(--surface);
+  color: var(--text-muted);
+  border-color: var(--border);
+}
+
+/* ---------- cards for charts ---------- */
+.chart-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 0.9rem 0.6rem 0.45rem 0.6rem;
+  margin-bottom: 0.9rem;
+}
+
+/* ---------- ranking tables ---------- */
+.table-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  overflow: auto;
+  margin-bottom: 0.9rem;
+}
+.rank-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+  color: var(--text);
+}
+.rank-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--surface-alt);
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.rank-table tbody td {
+  padding: 0.52rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.rank-table tbody tr:last-child td { border-bottom: none; }
+.rank-table tbody tr:hover td { background: var(--hover-bg); }
+.rank-table td.rank {
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  width: 2.2rem;
+  font-size: 0.78rem;
+}
+.rank-table td.name {
+  font-weight: 500;
+  max-width: 230px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rank-table td.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.rank-table th.num-h { text-align: right; }
+.rank-table td.muted, .rank-table span.muted { color: var(--text-muted); }
+.badge {
+  display: inline-block;
+  background: var(--accent-soft);
+  color: var(--text);
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 0.1rem 0.55rem;
+  white-space: nowrap;
+}
+
+/* ---------- empty state ---------- */
+.empty-state {
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  padding: 2.2rem 1.5rem;
+  text-align: center;
+  color: var(--text-muted);
+  margin: 0.6rem 0 1rem 0;
+}
+.empty-state .icon { font-size: 1.6rem; margin-bottom: 0.4rem; }
+.empty-state .headline { color: var(--text); font-weight: 600; margin-bottom: 0.2rem; }
+
+/* ---------- footer ---------- */
+.ado-footer {
+  border-top: 1px solid var(--border);
+  margin-top: 1.6rem;
+  padding-top: 0.8rem;
+  color: var(--text-muted);
+  font-size: 0.76rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ---------- widget tuning ---------- */
+div[data-testid="stWidgetLabel"] p, label {
+  color: var(--text) !important;
+  font-size: 0.85rem;
+}
+div[data-testid="stWidgetLabel"] span {
+  color: var(--text-muted);
+}
+.stButton > button {
+  border-radius: 9px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+.stButton > button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+.stButton > button[kind="secondary"] { border-color: var(--border); }
+
+/* multiselect + selectbox + text inputs — target the combobox/listbox roles
+   and their wrapper fields (stable across Streamlit's generated classes) */
+div[role="combobox"][aria-haspopup="listbox"],
+[data-testid="stMultiSelect"] [role="combobox"],
+[data-testid="stSelectbox"] [role="combobox"],
+[data-testid="stMultiSelect"] div:has(input[role="combobox"]),
+[data-testid="stSelectbox"] div:has(input[role="combobox"]),
+[data-testid="stMultiSelect"] > div > div > div,
+[data-testid="stSelectbox"] > div > div > div {
+  background: var(--surface) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+}
+[data-testid="stMultiSelect"] input[role="combobox"]::placeholder,
+[data-testid="stSelectbox"] input[role="combobox"]::placeholder {
+  color: var(--text-muted) !important;
+  opacity: 1 !important;
+}
+[role="listbox"],
+[data-testid="stSelectbox"] [data-bas-web="1"],
+[data-testid="stMultiSelect"] [data-bas-web="1"] {
+  background: var(--surface) !important;
+  color: var(--text) !important;
+}
+[role="listbox"] li,
+[role="option"] {
+  color: var(--text) !important;
+}
+[role="option"][aria-selected="true"],
+[role="option"]:hover {
+  background: var(--accent-soft) !important;
+  color: var(--text) !important;
+}
+[data-testid="stMultiSelect"] [data-testid="stMarkdownContainer"] p {
+  color: var(--text);
+}
+[data-testid="stMultiSelect"] svg { color: var(--text-muted); }
+
+/* hide Streamlit chrome (deploy button, running status, edit app) */
+[data-testid="stToolbar"],
+[data-testid="stStatusWidget"],
+[data-testid="stDecoration"],
+[data-testid="stHeader"] button[aria-label*="Deploy"],
+header[data-testid="stHeader"] { background: transparent; }
+
+/* slider */
+[data-testid="stSlider"] { color: var(--text); }
+[data-testid="stSlider"] [role="slider"] {
+  background: var(--surface);
+  border: 2px solid var(--accent);
+  box-shadow: var(--shadow);
+}
+[data-testid="stSlider"] [class*="track"] {
+  background: var(--border);
+}
+[data-testid="stSlider"] [class*="track"][class*="middle"] {
+  background: color-mix(in srgb, var(--accent) 45%, transparent);
+}
+[data-testid="stSlider"] [class*="tick"] {
+  background: var(--text-muted);
+}
+[data-testid="stSlider"] [class*="value"] {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 6px;
+}
+
+/* segmented control + pills */
+[data-testid="stSegmentedControl"],
+[data-testid="stPills"] {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 2px;
+}
+[data-testid="stSegmentedControl"] button,
+[data-testid="stPills"] button {
+  border-radius: 8px;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+[data-testid="stSegmentedControl"] button[aria-checked="true"],
+[data-testid="stPills"] button[aria-checked="true"] {
+  background: var(--accent-soft);
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* expander */
+[data-testid="stExpander"] {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+}
+[data-testid="stExpander"] summary {
+  color: var(--text);
+}
+
+/* metric-free zone: keep streamlit alerts clean */
+[data-testid="stAlert"] { background: var(--surface-alt); }
+
+/* plotly modebar subtle */
+.modebar {
+  background: transparent !important;
+}
+.modebar-btn { color: var(--text-muted) !important; }
+
+/* dataframe guard (shouldn't be used, but keep themed if ever) */
+[data-testid="stDataFrame"] { color: var(--text); }
